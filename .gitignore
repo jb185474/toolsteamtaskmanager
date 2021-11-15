@@ -1,0 +1,16 @@
+.DS_Store
+.idea
+*/node
+*/node_modules
+*rebel.xml
+*rebel.xml.bak
+*rebel-remote.xml
+*rebel-remote.xml.bak
+*release.properties
+*.iml
+*.out
+.project
+.settings/
+.vscode/
+.git
+

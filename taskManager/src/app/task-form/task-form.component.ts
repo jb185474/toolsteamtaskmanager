@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Server } from 'http';
+import { MongoClient } from 'mongodb';
 import { Task } from '../shared/models/task';
 import { TaskService } from '../shared/services/taskservice';
 
@@ -12,14 +14,17 @@ import { TaskService } from '../shared/services/taskservice';
 export class TaskFormComponent implements OnInit {
 
   taskManagerTask: FormGroup = this.fb.group({});
+  //mongoUrl = 'mongodb://127.0.0.1:27017';
   
   model: Task = new Task();
   savedTasks: Task[] = Array<Task>();
   constructor(
     private taskService: TaskService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder)
+    { }
 
   ngOnInit(): void {
+
     this.taskManagerTask = this.fb.group({
       taskName: [this.model.name],
       taskSynopsis: [this.model.synopsis],
@@ -62,8 +67,15 @@ export class TaskFormComponent implements OnInit {
     
     
     this.savedTasks.push(currentModel);
-    //this.savedTasks = this.taskService.globalTasks;
-    console.log("submitted");
+
+    this.model = currentModel;
+
+    this.taskService.addTask(this.model).subscribe((response: Response) => {
+      console.log("submitted");
+      this.savedTasks = this.taskService.globalTasks;
+    });
+
+    
   }
 
   removeTaskId(task: Task){
@@ -100,5 +112,6 @@ get dueDateDay() {
 get dueDateYear() {
   return this.taskManagerTask.get('dueDateYear');
 }
+
 
 }

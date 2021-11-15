@@ -1,17 +1,27 @@
 import { Injectable } from "@angular/core";
 import { Task } from "../models/task";
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
   })
 export class TaskService {
 
+    constructor(private http: HttpClient) {
+    }
+
     public globalTasks: Task[] = [];
 
 
     //Add Task
-    addTask(taskModel: Task  ){
-        this.globalTasks.push(taskModel);
+    public addTask(taskModel: Task  ){
+        const httpOptions = {
+            headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}),
+            params: new HttpParams().set('action', 'addTask')
+        };
+        const requestBody = encodeURIComponent(JSON.stringify(taskModel));
+        return this.http.post<Response>('http://localhost:8080/tm', requestBody, httpOptions);
+        //this.globalTasks.push(taskModel);
     }
 
     //Remove Task

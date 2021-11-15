@@ -1,16 +1,16 @@
 <div class="container">
     <form [formGroup]="taskManagerTask" (ngSubmit)="onSubmit()">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <label>Task Name:</label>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <input type="text" maxlength="100" formControlName="taskName">
             </div>
             <div class="col-sm-4">
                 <label>Due Date:</label>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-8">
                 <select maxlength="100" formControlName="dueDateMonth">
                     <option value="0">January</option>
                     <option value="1">February</option>
@@ -70,19 +70,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <label>Synopsis:</label>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <input type="text" maxlength="200" formControlName="taskSynopsis">
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <label>Text:</label>
             </div>
-            <div class="col-sm-6">
-                <textarea rows="4" cols="100" type="text" maxlength="1024" formControlName="ˆ"></textarea>
+            <div class="col-sm-8">
+                <textarea rows="4" cols="100" type="text" maxlength="1024" formControlName="taskText"></textarea>
             </div>
         </div>
         <div class="row">
