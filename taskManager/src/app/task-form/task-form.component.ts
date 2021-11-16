@@ -25,6 +25,16 @@ export class TaskFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.taskService.getAllTasks().subscribe((data: Task[]) => {
+      console.log("submitted");
+      this.savedTasks = data;
+      this.buildForm();
+    });
+
+    
+  }
+
+  buildForm(){
     this.taskManagerTask = this.fb.group({
       taskName: [this.model.name],
       taskSynopsis: [this.model.synopsis],
