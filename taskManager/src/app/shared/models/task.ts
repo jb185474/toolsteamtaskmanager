@@ -1,5 +1,5 @@
 export class Task {
-    id: number;
+    _id: number;
     name: string;
     synopsis: string;
     text: string;
@@ -7,12 +7,11 @@ export class Task {
     dueBy: Date;
 
     constructor(){
-        this.id = -1;
+        this._id = -1;
         this.name = '';
         this.synopsis = '';
         this.text = '';
         this.createdBy = '';
-        let now = new Date();
         this.dueBy = new Date();
     }
 

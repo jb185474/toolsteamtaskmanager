@@ -33,6 +33,34 @@ app.get('/getAllRecords', async(req, res) => {
     
 });
 
+app.get('/getSingleRecord', async(req, res) => {
+    console.log("Here");
+    let id = req.query.id;
+    try{
+        console.log("id = " + id);
+        const records = await dbservice.getSingleRecord(id);
+        res.statusCode = "200";
+        res.json(records);    
+    }
+    catch(error){
+        console.log(error);
+    }
+    
+});
+
+app.post('/addNewUser', async(req, res) => {
+    try{
+        console.log("id = " + id);
+        const records = await dbservice.getSingleRecord(id);
+        res.statusCode = "200";
+        res.json(records);    
+    }
+    catch(error){
+        console.log(error);
+    }
+    
+});
+
 app.use("/", express.static('../taskManager/dist/taskManager/'));
 
 // start the Express server

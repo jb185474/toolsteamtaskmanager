@@ -29,6 +29,10 @@ export class TaskService {
         return this.http.get<Task[]>('http://localhost:8080/getAllRecords');
     }
 
+    public getSingleTaskById(id:String): Observable<Task>{
+        return this.http.get<Task>('http://localhost:8080/getSingleRecord/?id=' + id);
+    }
+
     //Remove Task
     removeTask(taskModel: Task ){
         
